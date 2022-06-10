@@ -1,7 +1,7 @@
 import json
 import random
 
-with open("data.json", "r", encoding="utf-8") as f:
+with open("themedb-en.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
 all_words = {}
