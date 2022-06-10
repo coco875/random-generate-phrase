@@ -1,8 +1,23 @@
 import json
 import random
+import wikipediaapi
 
-with open("data.json", "r", encoding="utf-8") as f:
-    data = json.load(f)
+wiki_wiki = wikipediaapi.Wikipedia('en', extract_format=wikipediaapi.ExtractFormat.WIKI)
+
+page = wiki_wiki.page(input("name of wikipedia page : "))
+
+data = []
+data += page.summary.split(".")
+
+for s in page.sections:
+    data += s.text.split(".")
+
+i = 0
+
+while len(data) > i:
+    if data[i] == "":
+        del data[i]
+    i+=1
 
 all_words = {}
 first_words = []
